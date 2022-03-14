@@ -13,7 +13,8 @@ def create
 end
 
 def show
-  render status: 501
+  movie = Movie.find(params[:id])
+  render json: movie
 end
 
 def edit
@@ -30,8 +31,6 @@ end
 
 private
   def movie_params
-    
+    params.require(:movie).permit(:name, :rating)
   end
-
-
 end
