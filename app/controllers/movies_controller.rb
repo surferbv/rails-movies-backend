@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
     movie = Movie.find(params[:id])
     if movie
       movie.update(movie_params)
-      render json: {message: "Movie successfully updated."}, status: 200
+      render json: {message: "Movie successfully updated."}, status: 204
     else
       render json: {error: "Movie was not updated."}, status: 400
     end
