@@ -27,12 +27,6 @@ class MoviesController < ApplicationController
     render json: movie, status: 200
   end
 
-  # get
-  # responsible for rendering the view before update
-  def edit
-    render status: :not_implemented
-  end
-
   # put
   # responsible for updating the existing record
   # format { "name": "acme", "raiting": "10" }
