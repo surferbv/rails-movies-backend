@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
   # get
   def show
     movie = Movie.find(params[:id])
-    render json: movie
+    render json: movie, status: 200
   end
 
   # get
