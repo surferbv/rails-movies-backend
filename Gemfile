@@ -7,6 +7,7 @@ ruby '3.0.0'
 gem 'awesome_print', '~> 1.8'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
+gem 'factory_bot_rails', '~> 6.2'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
