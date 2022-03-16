@@ -8,14 +8,23 @@ class MoviesController < ApplicationController
   # get
   # responsible for rendering the view before create
   def new
-    render status: :not_implemented 
+    render status: 501 
   end
 
   # post
   # format { "name": "acme", "raiting": "10" }
   def create
     # .create! is equivalent to .new followed by .save! (throws an error if saving fails). It's also just a wee bit shorter
-    Movie.create!(params[:movie])
+    # Movie.create!(params[:movie])
+    # render json: {message: "Movie was created successfully."}, status: :created
+
+    movie = Movie.new(params[:movie])
+    if movie
+      movie.save!
+      render json: {message: "Movie was created successfully."}, status: :created
+    else
+      render json: {error: "Movie failed to be created."}, status: :internal_server_error
+    end
   end
 
   # get

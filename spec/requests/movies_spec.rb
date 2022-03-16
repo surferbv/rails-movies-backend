@@ -8,6 +8,8 @@ RSpec.describe MoviesController, type: :request do
 
     before{
       @movie1 = create(:movie1)
+      @movie_id = @movie1.id
+      @movie_json = { name: "Terminaor 2", rating: 5 }
     }
 
     it "GET /index expect 200" do
@@ -15,10 +17,14 @@ RSpec.describe MoviesController, type: :request do
       expect(response).to have_http_status(:success)
     end
     
-    it "POST /create"
+    it "POST /create" do
+      headers = { "CONTENT_TYPE" => "application/json" }
+      post "/movies", params: @movie_json
+      expect(response).to have_http_status(:created)
+    end
 
     it "GET /show" do
-      get "/movies/1"
+      get "/movies/#{@movie_id}"
       expect(response).to have_http_status(:success)
     end
 
