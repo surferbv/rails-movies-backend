@@ -5,12 +5,6 @@ class MoviesController < ApplicationController
     render json: movies
   end
   
-  # get
-  # responsible for rendering the view before create
-  def new
-    render status: 501 
-  end
-
   # post
   # format { "name": "acme", "raiting": "10" }
   def create
