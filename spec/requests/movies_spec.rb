@@ -7,7 +7,7 @@ RSpec.describe MoviesController, type: :request do
     subject{ response_body }
 
     before{
-      @movie = create(:movie1)
+      @movie = create(:movie)
       @movie_json = { name: "Terminaor 2", rating: 5 }
     }
 
@@ -29,10 +29,13 @@ RSpec.describe MoviesController, type: :request do
     
     # TODO: Not working
     it "PUT /update" do
-      updated_movie_attributes = { name: @movie.name, rating: 6 }
-      put :update, id: @movie.id, movie: @movie.attributes = updated_movie_attributes
-      @movie.reload
-      expect(response).to have_http_status(:no_content)
+      put "/movies/#{@movie.id}", params: {
+        movie:{
+          name: @movie.name,
+          rating: 6
+        }
+      }
+      expect(response).to have_http_status(:ok)
     end
     
     it "DELETE /destroy" do
